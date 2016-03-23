@@ -13,13 +13,24 @@ public class Stat_pv_count {
 			Mapper<Object, Text, Text, IntWritable> {
 		private final static IntWritable one = new IntWritable(1);
 
-		private Text word = new Text();
-
 		public void map(Object key, Text value, Context context)
 				throws IOException, InterruptedException {
-			if (value.toString().indexOf("main_feed") > -1) {
-				word.set("pv");
-				context.write(word, one);
+			String msg = value.toString();
+			if (msg.indexOf("main_feed") > -1) {
+				Text pv_key = new Text();
+				pv_key.set("pv");
+				context.write(pv_key, one);
+				
+				StatsParser statsParser = new StatsParser(msg);
+				int tmeta2_num = statsParser.getL2Count();
+				Text impression_key = new Text();
+				impression_key.set("下发");
+				context.write(impression_key, new IntWritable(tmeta2_num));
+				
+				int available_pos_num = statsParser.getJSONObject().getInt("available_pos");
+				Text available_pos_key = new Text();
+				available_pos_key.set("available_pos_sum");
+				context.write(available_pos_key, new IntWritable(available_pos_num));
 			}
 		}
 	}
