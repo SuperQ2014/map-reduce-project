@@ -27,7 +27,12 @@ public class Stat_pv_count {
 				impression_key.set("下发");
 				context.write(impression_key, new IntWritable(tmeta2_num));
 				
-				int available_pos_num = statsParser.getJSONObject().getInt("available_pos");
+				int available_pos_num = 0;
+				try {
+					available_pos_num = statsParser.getJSONObject().getInt("available_pos");
+				} catch (Exception e) {
+					
+				}
 				Text available_pos_key = new Text();
 				available_pos_key.set("available_pos_sum");
 				context.write(available_pos_key, new IntWritable(available_pos_num));
