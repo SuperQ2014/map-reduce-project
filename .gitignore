@@ -74,3 +74,6 @@ local.properties
 
 *.zip
 .recommenders
+
+.log
+.txt
