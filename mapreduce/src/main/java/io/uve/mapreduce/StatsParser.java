@@ -1,8 +1,5 @@
 package io.uve.mapreduce;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-
 import org.json.*;
 
 public class StatsParser {
