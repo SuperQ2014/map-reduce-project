@@ -24,7 +24,7 @@ public class SubreqStat {
 		}
 	}
 
-	public static class IntSumReducer extends
+	public static class LongSumReducer extends
 			Reducer<Text, LongWritable, Text, LongWritable> {
 		private LongWritable result = new LongWritable();
 
