@@ -2,7 +2,7 @@ package io.uve.mapreduce.subreq;
 
 import java.io.IOException;
 
-import org.apache.hadoop.io.IntWritable;
+import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Mapper;
 import org.apache.hadoop.mapreduce.Reducer;
@@ -10,8 +10,8 @@ import org.apache.hadoop.mapreduce.Reducer;
 public class SubreqStat {
 	
 	public static class TokenizerMapper extends
-			Mapper<Object, Text, Text, IntWritable> {
-		private final static IntWritable one = new IntWritable(1);
+			Mapper<Object, Text, Text, LongWritable> {
+		private final static LongWritable one = new LongWritable(1);
 
 		public void map(Object key, Text value, Context context)
 				throws IOException, InterruptedException {
@@ -25,13 +25,13 @@ public class SubreqStat {
 	}
 
 	public static class IntSumReducer extends
-			Reducer<Text, IntWritable, Text, IntWritable> {
-		private IntWritable result = new IntWritable();
+			Reducer<Text, LongWritable, Text, LongWritable> {
+		private LongWritable result = new LongWritable();
 
-		public void reduce(Text key, Iterable<IntWritable> values,
+		public void reduce(Text key, Iterable<LongWritable> values,
 				Context context) throws IOException, InterruptedException {
 			int sum = 0;
-			for (IntWritable val : values) {
+			for (LongWritable val : values) {
 				sum += val.get();
 			}
 			result.set(sum);
