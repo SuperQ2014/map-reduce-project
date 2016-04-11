@@ -13,6 +13,7 @@ public class SubreqStat {
 	public static class TokenizerMapper extends
 			Mapper<Object, Text, Text, IntWritable> {
 		private final static IntWritable one = new IntWritable(1);
+		private final static String total = "total";
 
 		public void map(Object key, Text value, Context context)
 				throws IOException, InterruptedException {
@@ -21,7 +22,7 @@ public class SubreqStat {
 			String subreqName = parser.getSubreqname();
 			
 			context.write(new Text(subreqName), one);
-			context.write(new Text("total"), one);
+			context.write(new Text(total), one);
 		}
 	}
 
