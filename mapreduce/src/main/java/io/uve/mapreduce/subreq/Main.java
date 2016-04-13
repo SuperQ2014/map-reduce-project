@@ -8,7 +8,7 @@ import org.apache.hadoop.mapreduce.Job;
 import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 
-import io.uve.mapreduce.subreq.SubreqStat.LongSumReducer;
+import io.uve.mapreduce.subreq.SubreqStat.IntSumReducer;
 import io.uve.mapreduce.subreq.SubreqStat.TokenizerMapper;
 
 public class Main {
@@ -18,8 +18,8 @@ public class Main {
 		Job job = Job.getInstance(conf, "subreq_count");
 		job.setJarByClass(SubreqStat.class);
 		job.setMapperClass(TokenizerMapper.class);
-		job.setCombinerClass(LongSumReducer.class);
-		job.setReducerClass(LongSumReducer.class);
+		job.setCombinerClass(IntSumReducer.class);
+		job.setReducerClass(IntSumReducer.class);
 		job.setOutputKeyClass(Text.class);
 		job.setOutputValueClass(LongWritable.class);
 		FileInputFormat.addInputPath(job, new Path(args[0]));
