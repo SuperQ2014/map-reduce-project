@@ -53,7 +53,7 @@
 					</descriptorRefs>
 					<archive>
 						<manifest>
-							<mainClass>io.uve.mapreduce.subreq.Main</mainClass>
+							<mainClass>io.uve.hdfs2hdfs.Main</mainClass>
 						</manifest>
 					</archive>
 				</configuration>
