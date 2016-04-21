@@ -17,9 +17,11 @@ public class Hdfs2hdfsTask {
 
 		public void map(Object key, Text value, Context context) throws IOException, InterruptedException {
 			String msg = value.toString();
+			logger.info("original msg: " + msg);
 			String parsedMsg = ReadWriteProcess.parseLine(msg);
+			logger.info("parsed msg: " + parsedMsg);
 			if (parsedMsg != null) {
-				logger.info(parsedMsg);
+				logger.info("write prepared msg: " + parsedMsg);
 				context.write(new Text(parsedMsg), empty);
 			}
 		}
