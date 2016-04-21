@@ -7,21 +7,16 @@ import org.apache.hadoop.io.NullWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Mapper;
 import org.apache.hadoop.mapreduce.Reducer;
-import org.apache.log4j.Logger;
 
 public class Hdfs2hdfsTask {
 
 	public static class ReadWriteMapper extends Mapper<Object, Text, Text, NullWritable> {
 		private final static NullWritable empty = null;
-		private Logger logger = Logger.getLogger(ReadWriteMapper.class);
 
 		public void map(Object key, Text value, Context context) throws IOException, InterruptedException {
 			String msg = value.toString();
-			logger.info("original msg: " + msg);
 			String parsedMsg = ReadWriteProcess.parseLine(msg);
-			logger.info("parsed msg: " + parsedMsg);
 			if (parsedMsg != null) {
-				logger.info("write prepared msg: " + parsedMsg);
 				context.write(new Text(parsedMsg), empty);
 			}
 		}

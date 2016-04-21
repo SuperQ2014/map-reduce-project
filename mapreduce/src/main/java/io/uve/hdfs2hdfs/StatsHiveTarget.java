@@ -207,6 +207,6 @@ public class StatsHiveTarget {
 			   postostock + DELIMITED +
 			   tmeta + DELIMITED + 
 			   stat_date + DELIMITED +
-			   service_name + "\n";
+			   service_name;
 	}
 }
