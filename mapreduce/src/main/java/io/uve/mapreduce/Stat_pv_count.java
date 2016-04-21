@@ -7,6 +7,8 @@ import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Mapper;
 import org.apache.hadoop.mapreduce.Reducer;
 
+import io.uve.stats.StatsParser;
+
 public class Stat_pv_count {
 	
 	public static class TokenizerMapper extends

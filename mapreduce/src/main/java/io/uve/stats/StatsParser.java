@@ -1,4 +1,4 @@
-package io.uve.mapreduce;
+package io.uve.stats;
 
 import org.json.*;
 
