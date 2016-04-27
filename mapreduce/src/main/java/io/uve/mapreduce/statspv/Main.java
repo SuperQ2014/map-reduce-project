@@ -1,7 +1,7 @@
 package io.uve.mapreduce.statspv;
 
-import io.uve.mapreduce.Stat_pv_count.IntSumReducer;
-import io.uve.mapreduce.Stat_pv_count.TokenizerMapper;
+import io.uve.mapreduce.statspv.Stat_pv_count_filter.IntSumReducer;
+import io.uve.mapreduce.statspv.Stat_pv_count_filter.TokenizerMapper;
 
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.Path;
@@ -16,7 +16,7 @@ public class Main {
 	public static void main(String[] args) throws Exception {
 		Configuration conf = new Configuration();
 		Job job = Job.getInstance(conf, "stats_pv");
-		job.setJarByClass(Stat_pv_count.class);
+		job.setJarByClass(Stat_pv_count_filter.class);
 		job.setMapperClass(TokenizerMapper.class);
 		job.setCombinerClass(IntSumReducer.class);
 		job.setReducerClass(IntSumReducer.class);
