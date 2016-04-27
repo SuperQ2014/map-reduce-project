@@ -16,7 +16,7 @@ public class Stat_pv_count_filter {
 		public void map(Object key, Text value, Context context)
 				throws IOException, InterruptedException {
 			String msg = value.toString();
-			if (msg.length() > 50) {
+			if (msg.indexOf("reqtime:") > 0) {
 				Text pv_key = new Text();
 				pv_key.set("count");
 				context.write(pv_key, one);
