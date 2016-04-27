@@ -11,9 +11,9 @@ import org.apache.hadoop.mapreduce.Reducer;
 public class Stat_uid_filter {
 	
 	public static class TokenizerMapper extends
-			Mapper<Object, Text, Text, NullWritable> {
-//		private final static IntWritable one = new IntWritable(1);
-		private final static NullWritable empty = null;
+			Mapper<Object, Text, Text, IntWritable> {
+		private final static IntWritable one = new IntWritable(1);
+//		private final static NullWritable empty = null;
 
 		public void map(Object key, Text value, Context context)
 				throws IOException, InterruptedException {
@@ -21,7 +21,7 @@ public class Stat_uid_filter {
 			if (msg.contains("1111681197")) {
 				Text pv_key = new Text();
 				pv_key.set(msg);
-				context.write(pv_key, empty);
+				context.write(pv_key, one);
 			}
 		}
 	}
