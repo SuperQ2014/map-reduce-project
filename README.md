@@ -25,7 +25,7 @@ mvn package
 
 3、同步到公司Hadoop集群的通道机上，启动map-reduce job，命令：
 ```
-hdfs jar yourPackageJarFile LogPath OutputDir
+hadoop jar yourPackageJarFile LogPath OutputDir
 ```
 ## Example
 1、将本项目代码clone到服务器上，如目录为：/data0/map-reduce-example
